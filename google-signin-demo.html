@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Google Sign-In (Demo)</title>
+  <style>
+    body { font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; display:flex; align-items:center; justify-content:center; height:100vh; background:#0e0f12; color:#fff; }
+    .card { background: linear-gradient(135deg,#0f1724, #08121b); padding:28px; border-radius:12px; width:420px; box-shadow:0 10px 40px rgba(0,0,0,0.6); text-align:center }
+    .avatar { width:84px;height:84px;border-radius:50%;display:inline-block;background:#222;margin:8px auto 12px; }
+    button { margin-top:18px; padding:10px 16px; border-radius:8px;background:#1a73e8;border:0;color:#fff;font-weight:600;cursor:pointer }
+    .hint { color:#bfc7d2; font-size:0.9rem; margin-top:8px }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h2>Google Sign-In (Demo)</h2>
+    <div class="avatar"></div>
+    <div style="margin-top:8px">This demo simulates a Google sign-in and posts a profile back to the parent window.</div>
+
+    <div class="hint">Click the button below to finish sign-in and return to the site (demo).</div>
+
+    <button id="finish">Finish sign-in (demo)</button>
+    <div style="height:8px"></div>
+    <button id="cancel" style="background:#6b7280">Cancel</button>
+  </div>
+
+  <script>
+    const sampleProfile = {
+      id: 'demo-12345',
+      name: 'Demo User',
+      email: 'demo.user@example.com',
+      picture: 'data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22200%22 height=%22200%22><rect width=%22200%22 height=%22200%22 fill=%22%232a2a2a%22/><text x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 fill=%22%23fff%22 font-size=%2232%22>Demo</text></svg>'
+    };
+
+    document.getElementById('finish').addEventListener('click', () => {
+      try {
+        if (window.opener) {
+          window.opener.postMessage({ type: 'studypy-google-signin', profile: sampleProfile }, window.location.origin);
+        }
+      } catch (err) { console.warn(err); }
+      window.close();
+    });
+
+    document.getElementById('cancel').addEventListener('click', () => {
+      window.close();
+    });
+  </script>
+</body>
+</html>

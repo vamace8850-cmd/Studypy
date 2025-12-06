@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quizzes - StudyPy</title>
+    <link rel="stylesheet" href="css/quiz.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Montserrat:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Quiz Container -->
+    <div class="quiz-container">
+        <!-- Quiz Header -->
+        <div class="quiz-header">
+            <div class="quiz-title">
+                <h1>StudyPy Quizzes</h1>
+                <p>Test your knowledge with interactive quizzes</p>
+            </div>
+            <div class="header-actions">
+                <button class="theme-toggle" id="themeToggle" title="Toggle dark/light mode">🌙</button>
+                <a href="index.html" class="back-btn">← Back to Home</a>
+            </div>
+        </div>
+
+        <!-- Quiz Selection Grid -->
+        <div class="quiz-selection" id="quizSelection">
+            <!-- Quiz cards will be dynamically inserted here -->
+        </div>
+    </div>
+
+    <!-- Quiz Modal (Preview before starting) -->
+    <div class="quiz-modal" id="quizModal" style="display: none;">
+        <div class="modal-content">
+            <button class="modal-close" id="modalClose">&times;</button>
+            <div class="modal-header">
+                <h2 id="modalTitle">Quiz Title</h2>
+                <p id="modalSubtitle">Subtitle</p>
+            </div>
+
+            <div class="modal-details">
+                <div class="detail-item">
+                    <span class="detail-icon">📝</span>
+                    <span id="detailQuestions">50 Questions</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-icon">📊</span>
+                    <span id="detailDifficulty">Medium</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-icon">⏱️</span>
+                    <span id="detailTime">~5 mins</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-icon">✅</span>
+                    <span id="detailClass">Class 9</span>
+                </div>
+            </div>
+
+            <div class="modal-description">
+                <p id="modalDescription">Quiz description goes here</p>
+            </div>
+
+            <div class="modal-actions">
+                <button class="btn btn-secondary" id="modalCancel">Cancel</button>
+                <button class="btn btn-primary" id="modalStart">Start Quiz</button>
+            </div>
+
+            <div class="modal-resume" id="modalResume" style="display: none;">
+                <p>📚 You've already started this quiz!</p>
+                <button class="btn btn-secondary" id="modalContinue">Continue from Question <span id="resumeQuestion">1</span></button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="js/quiz-select.js"></script>
+</body>
+</html>
